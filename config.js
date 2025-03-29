@@ -5,7 +5,7 @@ const config = {
   appName: "Investor Calculator",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app.",
+    "Calculate your compound interest of your investments, and see how it grows over time and how much you can expect to make.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "investorso.com",
   crisp: {
