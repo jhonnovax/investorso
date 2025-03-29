@@ -30,14 +30,6 @@ export default function Page() {
 
   const [results, setResults] = useState(defaultResults);
 
-  const compoundFrequencies = {
-    annually: 1,
-    semiannually: 2,
-    quarterly: 4,
-    monthly: 12,
-    daily: 365,
-  };
-
   function onCalculate() {
     const data = calculateCompoundInterest(formData);
 
@@ -103,10 +95,11 @@ export default function Page() {
       </div>
 
       <div className="form-control">
-        <label className="label">
+        <label className="label" htmlFor="compoundFrequency">
           <span className="label-text">Compound Frequency</span>
         </label>
         <select
+          id="compoundFrequency"
           className="select select-bordered"
           value={formData.compoundFrequency}
           onChange={(e) =>
@@ -170,14 +163,14 @@ export default function Page() {
                         <Line 
                           type="monotone" 
                           dataKey="contributions" 
-                          stroke="#999" 
-                          name="Total Contributions"
+                          stroke="#333" 
+                          name="Contributions"
                         />
                         <Line 
                           type="monotone" 
                           dataKey="profit" 
-                          stroke="#ffd900" 
-                          name="Total Profit"
+                          stroke="#cead00" 
+                          name="Profit"
                         />
                         <Line 
                           type="monotone" 

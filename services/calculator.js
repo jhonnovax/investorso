@@ -1,3 +1,11 @@
+export const compoundFrequencies = {
+  annually: 1,
+  semiannually: 2,
+  quarterly: 4,
+  monthly: 12,
+  daily: 365,
+};
+
 export function calculateCompoundInterest(formData) {
     const {
       initialInvestment,
