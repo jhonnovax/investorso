@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+/* import { useSearchParams } from "next/navigation"; */
 import Link from "next/link";
 import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
@@ -34,12 +34,12 @@ const Header = ({
   setIsOpen,
   mobileContent = null
 }) => {
-  const searchParams = useSearchParams();
+ /*  const searchParams = useSearchParams(); */
 
   // setIsOpen(false) when the route changes
-  useEffect(() => {
+ /*  useEffect(() => {
     setIsOpen(false);
-  }, [searchParams, setIsOpen]);
+  }, [searchParams, setIsOpen]); */
 
   return (
     <header className="bg-base-100 shadow-sm">
