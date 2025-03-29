@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -12,24 +12,23 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Header from "@/components/Header";
+import { calculateCompoundInterest } from "@/services/calculator";
+
+const defaultFormData = {
+  initialInvestment: 0,
+  monthlyContribution: 833,
+  years: 30,
+  interestRate: 7,
+  compoundFrequency: "annually",
+};
+const defaultResults = calculateCompoundInterest(defaultFormData);
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    calculateCompoundInterest()
-  }, []);
+  const [formData, setFormData] = useState(defaultFormData);
 
-  const [formData, setFormData] = useState({
-    initialInvestment: 0,
-    monthlyContribution: 833,
-    years: 30,
-    interestRate: 7,
-    interestRateVariance: 2,
-    compoundFrequency: "annually",
-  });
-
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(defaultResults);
 
   const compoundFrequencies = {
     annually: 1,
@@ -39,41 +38,8 @@ export default function Page() {
     daily: 365,
   };
 
-  function calculateCompoundInterest() {
-    const {
-      initialInvestment,
-      monthlyContribution,
-      years,
-      interestRate,
-      interestRateVariance,
-      compoundFrequency,
-    } = formData;
-
-    const frequency = compoundFrequencies[compoundFrequency];
-    const monthlyRate = interestRate / 100 / 12;
-    const monthlyVariance = interestRateVariance / 100 / 12;
-    const totalMonths = years * 12;
-    const data = [];
-
-    let balance = initialInvestment;
-    let totalContributions = initialInvestment;
-
-    for (let month = 0; month <= totalMonths; month++) {
-      const randomVariance = (Math.random() - 0.5) * monthlyVariance * 2;
-      const effectiveRate = monthlyRate + randomVariance;
-      
-      if (month > 0) {
-        balance = balance * (1 + effectiveRate) + monthlyContribution;
-        totalContributions += monthlyContribution;
-      }
-
-      data.push({
-        month,
-        balance: Math.round(balance),
-        contributions: Math.round(totalContributions),
-        profit: Math.round(balance - totalContributions),
-      });
-    }
+  function onCalculate() {
+    const data = calculateCompoundInterest(formData);
 
     setResults(data);
   }
@@ -110,7 +76,7 @@ export default function Page() {
 
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Length of Time (Years)</span>
+          <span className="label-text">Length of Time in Years</span>
         </label>
         <input
           type="number"
@@ -124,7 +90,7 @@ export default function Page() {
 
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Estimated Interest Rate (%)</span>
+          <span className="label-text">Estimated Annual Interest Rate (%)</span>
         </label>
         <input
           type="number"
@@ -132,20 +98,6 @@ export default function Page() {
           value={formData.interestRate}
           onChange={(e) =>
             setFormData({ ...formData, interestRate: Number(e.target.value) })
-          }
-        />
-      </div>
-
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Interest Rate Variance Range (%)</span>
-        </label>
-        <input
-          type="number"
-          className="input input-bordered"
-          value={formData.interestRateVariance}
-          onChange={(e) =>
-            setFormData({ ...formData, interestRateVariance: Number(e.target.value) })
           }
         />
       </div>
@@ -171,7 +123,7 @@ export default function Page() {
 
       <button
         className="btn btn-primary w-full mt-6"
-        onClick={calculateCompoundInterest}
+        onClick={onCalculate}
       >
         Calculate
       </button>
@@ -217,21 +169,21 @@ export default function Page() {
                         <Legend />
                         <Line 
                           type="monotone" 
-                          dataKey="balance" 
-                          stroke="#8884d8" 
-                          name="Total Balance"
-                        />
-                        <Line 
-                          type="monotone" 
                           dataKey="contributions" 
-                          stroke="#82ca9d" 
+                          stroke="#999" 
                           name="Total Contributions"
                         />
                         <Line 
                           type="monotone" 
                           dataKey="profit" 
-                          stroke="#ffc658" 
+                          stroke="#ffd900" 
                           name="Total Profit"
+                        />
+                        <Line 
+                          type="monotone" 
+                          dataKey="balance" 
+                          stroke="#419400" 
+                          name="Total Balance"
                         />
                       </LineChart>
                     </ResponsiveContainer>
@@ -244,9 +196,9 @@ export default function Page() {
                     <thead>
                       <tr>
                         <th>Year</th>
-                        <th>Balance</th>
                         <th>Contributions</th>
                         <th>Profit</th>
+                        <th>Balance</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -255,9 +207,9 @@ export default function Page() {
                         .map((result, index) => (
                           <tr key={index}>
                             <td>{index}</td>
-                            <td>${result.balance.toLocaleString()}</td>
                             <td>${result.contributions.toLocaleString()}</td>
                             <td>${result.profit.toLocaleString()}</td>
+                            <td>${result.balance.toLocaleString()}</td>
                           </tr>
                         ))}
                     </tbody>
