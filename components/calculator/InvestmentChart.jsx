@@ -53,8 +53,17 @@ export default function InvestmentChart({ results }) {
                 setHoverData(data.activePayload[0].payload);
               }
             }}
+            onTouchMove={(data) => {
+              if (data && data.activePayload) {
+                setHoverData(data.activePayload[0].payload);
+              }
+            }}
             onMouseLeave={() => {
-              // Reset to last data point when mouse leaves
+              if (results && results.length > 0) {
+                setHoverData(results[results.length - 1]);
+              }
+            }}
+            onTouchEnd={() => {
               if (results && results.length > 0) {
                 setHoverData(results[results.length - 1]);
               }
