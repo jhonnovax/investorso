@@ -43,7 +43,7 @@ const Header = ({
 
   return (
     <header className="bg-base-100 shadow-sm">
-      <nav className="container flex items-center justify-between px-5 py-4 mx-auto max-w-7xl">
+      <nav className="container flex items-center justify-between px-4 md:px-5 py-4 mx-auto max-w-7xl">
         {/* Logo area */}
         <div className="flex lg:flex-1">
           <Link

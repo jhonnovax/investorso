@@ -6,14 +6,6 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
     e.preventDefault();
   }
 
-  function handleNumberInput(e, field) {
-    const value = e.target.value;
-    setFormData({
-      ...formData,
-      [field]: value === '' ? '' : Number(value)
-    });
-  }
-
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="form-control">
@@ -27,7 +19,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           onValueChange={(value) => 
             setFormData({
               ...formData,
-              initialInvestment: value ? Number(value) : ''
+              initialInvestment: value
             })
           }
           prefix="$"
@@ -47,7 +39,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           onValueChange={(value) => 
             setFormData({
               ...formData,
-              monthlyContribution: value ? Number(value) : ''
+              monthlyContribution: value
             })
           }
           prefix="$"
@@ -67,7 +59,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           onValueChange={(value) => 
             setFormData({
               ...formData,
-              years: value ? Number(value) : ''
+              years: value
             })
           }
           decimalsLimit={0}
@@ -88,13 +80,14 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           onValueChange={(value) => 
             setFormData({
               ...formData,
-              annualInterestRate: value ? Number(value) : ''
+              annualInterestRate: value
             })
           }
           decimalsLimit={2}
           allowNegativeValue={false}
           allowDecimals={true}
           disableGroupSeparators={true}
+          suffix="%"
         />
       </div>
 
