@@ -22,6 +22,7 @@ export default function Page() {
 
   function onCalculate() {
     setResults(calculateCompoundInterest(formData));
+    setIsOpen(false);
   }
 
   const mobileDrawerContent = (
