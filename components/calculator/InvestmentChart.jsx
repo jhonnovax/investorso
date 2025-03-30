@@ -21,7 +21,8 @@ export default function InvestmentChart({ results }) {
   const lineColors = {
     contributions: theme === "dark" ? "#b3cbd6" : "#737373",
     simpleInterest: theme === "dark" ? "#ffd900" : "#8f7800",
-    compoundInterest: theme === "dark" ? "#4ade80" : "#419400"
+    compoundInterest: theme === "dark" ? "#4ade80" : "#419400",
+    grid: theme === "dark" ? "#555" : "#ccc"
   }
 
   // Initialize with last data point
@@ -60,11 +61,14 @@ export default function InvestmentChart({ results }) {
           >
             <defs>
               <linearGradient id="compoundGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#419400" stopOpacity={0.2}/>
-                <stop offset="95%" stopColor="#419400" stopOpacity={0}/>
+                <stop offset="5%" stopColor={theme === "dark" ? "#86efac" : "#007B00"} stopOpacity={0.2}/>
+                <stop offset="95%" stopColor={theme === "dark" ? "#86efac" : "#007B00"} stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid 
+              strokeDasharray="3 3" 
+              stroke={lineColors.grid}
+            />
             <XAxis 
               dataKey="period" 
               stroke={lineColors.contributions} 
