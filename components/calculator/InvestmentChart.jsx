@@ -185,7 +185,7 @@ export default function InvestmentChart({ results }) {
       </div>
 
       {/* Value display section below chart */}
-      <div className="mt-4 grid grid-cols-3 gap-4 text-sm md:text-base">
+      <div className="mt-2 grid grid-cols-3 gap-2 md:gap-4 text-xs sm:text-sm md:text-base">
         <div className="flex flex-col items-center">
           <span className="text-gray-600" style={{ color: lineColors.contributions }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">

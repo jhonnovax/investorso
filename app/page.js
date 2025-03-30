@@ -56,7 +56,7 @@ export default function Page() {
             )}
           </div>
 
-          <div className="hidden lg:block lg:sticky lg:top-8 self-start h-[calc(100vh-6rem)] overflow-y-auto bg-base-100 p-6 rounded-lg shadow-sm">
+          <div className="hidden lg:block lg:sticky lg:top-8 self-start h-[calc(100vh-6rem)] overflow-y-auto bg-base-100 p-4 rounded-lg shadow-sm">
             <h2 className="text-xl font-semibold mb-6">Calculator Parameters</h2>
             <CalculatorForm 
               formData={formData}
