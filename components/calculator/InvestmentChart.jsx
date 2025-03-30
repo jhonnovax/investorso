@@ -12,11 +12,12 @@ import {
 } from "recharts";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
-
+import useBreakpoint from "@/hooks/use-breakpoint";
 
 export default function InvestmentChart({ results }) {
   const [hoverData, setHoverData] = useState(null);
   const theme = useTheme();
+  const breakpoint = useBreakpoint();
 
   const lineColors = {
     contributions: theme === "dark" ? "#b3cbd6" : "#737373",
@@ -82,6 +83,7 @@ export default function InvestmentChart({ results }) {
               }).format(value)}
               stroke={lineColors.contributions}
               fontSize={12}
+              hide={['sm', 'xs'].includes(breakpoint)}
             />
             <Line 
               key="contributions"
