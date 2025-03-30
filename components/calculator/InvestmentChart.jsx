@@ -29,7 +29,7 @@ export default function InvestmentChart({ results, years }) {
 
   // Initialize with last data point only on mount or when results change
   useEffect(() => {
-    if (results && results.length > 0 && !hoverData) {
+    if (results && results.length > 0) {
       setHoverData(results[results.length - 1]);
     }
   }, [results]);
