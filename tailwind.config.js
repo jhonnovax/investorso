@@ -65,9 +65,14 @@ module.exports = {
     // https://daisyui.com/
     themes: [
       "bumblebee",
-      "halloween",
+      {
+        dim: {
+          ...require("daisyui/src/theming/themes")["dim"],
+          primary: "#ffd900",
+        },
+      }
     ],
     lightTheme: "bumblebee",
-    darkTheme: "halloween",
+    darkTheme: "dim",
   },
 };
