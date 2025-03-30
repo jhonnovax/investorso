@@ -58,8 +58,8 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <input
           type="number"
           className="input input-bordered"
-          value={formData.interestRate}
-          onChange={(e) => handleNumberInput(e, 'interestRate')}
+          value={formData.annualInterestRate}
+          onChange={(e) => handleNumberInput(e, 'annualInterestRate')}
         />
       </div>
 

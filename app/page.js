@@ -11,7 +11,7 @@ const defaultFormData = {
   initialInvestment: 0,
   monthlyContribution: 833,
   years: 30,
-  interestRate: 7,
+  annualInterestRate: 7,
   compoundFrequency: "annually",
 };
 
@@ -50,7 +50,7 @@ export default function Page() {
             {results.length > 0 && (
               <>
                 <InvestmentChart results={results} />
-                <InvestmentTable results={results} />
+                <InvestmentTable years={formData.years} results={results} />
               </>
             )}
           </div>
