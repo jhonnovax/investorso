@@ -27,9 +27,9 @@ export default function InvestmentChart({ results, years }) {
     grid: theme === "dark" ? "#555" : "#ccc"
   }
 
-  // Initialize with last data point
+  // Initialize with last data point only on mount or when results change
   useEffect(() => {
-    if (results && results.length > 0) {
+    if (results && results.length > 0 && !hoverData) {
       setHoverData(results[results.length - 1]);
     }
   }, [results]);
@@ -57,16 +57,6 @@ export default function InvestmentChart({ results, years }) {
             onTouchMove={(data) => {
               if (data && data.activePayload) {
                 setHoverData(data.activePayload[0].payload);
-              }
-            }}
-            onMouseLeave={() => {
-              if (results && results.length > 0) {
-                setHoverData(results[results.length - 1]);
-              }
-            }}
-            onTouchEnd={() => {
-              if (results && results.length > 0) {
-                setHoverData(results[results.length - 1]);
               }
             }}
           >
