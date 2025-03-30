@@ -12,9 +12,11 @@ export function calculateCompoundInterest(formData) {
       monthlyContribution,
       years,
       annualInterestRate,
+      compoundFrequency
     } = formData;
 
-    const monthlyRate = annualInterestRate / 100 / 12;
+    const periodsPerYear = compoundFrequencies[compoundFrequency];
+    const ratePerPeriod = annualInterestRate / 100 / periodsPerYear;
     const totalMonths = years * 12;
     const data = [];
 
@@ -24,8 +26,14 @@ export function calculateCompoundInterest(formData) {
 
     for (let month = 0; month <= totalMonths; month++) {      
       if (month > 0) {
-        totalContributions += monthlyContribution;
-        compoundInterest = compoundInterest * (1 + monthlyRate) + monthlyContribution;
+        totalContributions += monthlyContribution;        
+        const periodsElapsed = (month / 12) * periodsPerYear;
+        const compoundFactor = Math.pow(1 + ratePerPeriod, periodsElapsed);
+        
+        compoundInterest = initialInvestment * compoundFactor + 
+                          monthlyContribution * 12 / periodsPerYear * 
+                          ((compoundFactor - 1) / ratePerPeriod);
+
         simpleInterest = totalContributions + 
                         (initialInvestment * (annualInterestRate/100) * (month/12)) + 
                         (monthlyContribution * month * (annualInterestRate/100) * (month/24));
@@ -37,7 +45,6 @@ export function calculateCompoundInterest(formData) {
         simpleInterest: Math.round(simpleInterest),
         compoundInterest: Math.round(compoundInterest)
       });
-      
     }
 
     if (years > 1) {
