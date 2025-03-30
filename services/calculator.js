@@ -26,7 +26,9 @@ export function calculateCompoundInterest(formData) {
       if (month > 0) {
         totalContributions += monthlyContribution;
         compoundInterest = compoundInterest * (1 + monthlyRate) + monthlyContribution;
-        simpleInterest = (compoundInterest - totalContributions)
+        simpleInterest = totalContributions + 
+                        (initialInvestment * (annualInterestRate/100) * (month/12)) + 
+                        (monthlyContribution * month * (annualInterestRate/100) * (month/24));
       }
 
       data.push({
