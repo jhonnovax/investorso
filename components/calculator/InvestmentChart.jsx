@@ -11,15 +11,18 @@ import {
   ReferenceLine
 } from "recharts";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/hooks/use-theme";
 
-const lineColors = {
-  contributions: "#333",
-  simpleInterest: "#8f7800",
-  compoundInterest: "#419400"
-}
 
 export default function InvestmentChart({ results }) {
   const [hoverData, setHoverData] = useState(null);
+  const theme = useTheme();
+
+  const lineColors = {
+    contributions: theme === "dark" ? "#b3cbd6" : "#737373",
+    simpleInterest: theme === "dark" ? "#ffd900" : "#8f7800",
+    compoundInterest: theme === "dark" ? "#4ade80" : "#419400"
+  }
 
   // Initialize with last data point
   useEffect(() => {
@@ -62,15 +65,22 @@ export default function InvestmentChart({ results }) {
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="period" />
+            <XAxis 
+              dataKey="period" 
+              stroke={lineColors.contributions} 
+              fontSize={12}
+            />
             <YAxis 
               tickFormatter={(value) => new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 notation: 'compact',
               }).format(value)}
+              stroke={lineColors.contributions}
+              fontSize={12}
             />
             <Line 
+              key="contributions"
               type="monotone" 
               dataKey="contributions" 
               stroke={lineColors.contributions} 
@@ -94,6 +104,7 @@ export default function InvestmentChart({ results }) {
               }}
             />
             <Line 
+              key="simpleInterest"
               type="monotone" 
               dataKey="simpleInterest" 
               stroke={lineColors.simpleInterest} 
@@ -163,7 +174,7 @@ export default function InvestmentChart({ results }) {
         <div className="flex flex-col items-center">
           <span className="text-sm text-gray-600" style={{ color: lineColors.contributions }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">
-              <path stroke-width="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
+              <path strokeWidth="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
             </svg>
             Net deposits
           </span>
@@ -174,7 +185,7 @@ export default function InvestmentChart({ results }) {
         <div className="flex flex-col items-center">
           <span className="text-sm text-gray-600" style={{ color: lineColors.simpleInterest }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">
-              <path stroke-width="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
+              <path strokeWidth="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
             </svg>
             Simple Interest
           </span>
@@ -185,7 +196,7 @@ export default function InvestmentChart({ results }) {
         <div className="flex flex-col items-center">
           <span className="text-sm text-gray-600" style={{ color: lineColors.compoundInterest }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">
-              <path stroke-width="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
+              <path strokeWidth="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
             </svg>
             Compound Interest
           </span>
