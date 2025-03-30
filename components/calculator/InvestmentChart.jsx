@@ -185,37 +185,37 @@ export default function InvestmentChart({ results }) {
       </div>
 
       {/* Value display section below chart */}
-      <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="mt-4 grid grid-cols-3 gap-4 text-sm md:text-base">
         <div className="flex flex-col items-center">
-          <span className="text-sm text-gray-600" style={{ color: lineColors.contributions }}>
+          <span className="text-gray-600" style={{ color: lineColors.contributions }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">
               <path strokeWidth="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
             </svg>
-            Net deposits
+            <span className="hidden md:inline">Net</span> Deposits
           </span>
-          <span className="text-lg font-semibold">
+          <span className="font-semibold">
             {hoverData ? formatCurrency(hoverData.contributions) : '-'}
           </span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-sm text-gray-600" style={{ color: lineColors.simpleInterest }}>
+          <span className="text-gray-600" style={{ color: lineColors.simpleInterest }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">
               <path strokeWidth="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
             </svg>
-            Simple Interest
+            Simple <span className="hidden md:inline">Interest</span><span className="inline md:hidden">%</span>
           </span>
-          <span className="text-lg font-semibold">
+          <span className="font-semibold">
             {hoverData ? formatCurrency(hoverData.simpleInterest) : '-'}
           </span>
         </div>
         <div className="flex flex-col items-center">
-          <span className="text-sm text-gray-600" style={{ color: lineColors.compoundInterest }}>
+          <span className="text-gray-600" style={{ color: lineColors.compoundInterest }}>
             <svg className="inline-block mr-1" width="14" height="14" viewBox="0 0 32 32">
               <path strokeWidth="4" fill="none" stroke="currentColor" d="M0,16h10.666666666666666A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16H32M21.333333333333332,16A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"></path>
             </svg>
-            Compound Interest
+            Compound <span className="hidden md:inline">Interest</span><span className="inline md:hidden">%</span>
           </span>
-          <span className="text-lg font-semibold">
+          <span className="font-semibold">
             {hoverData ? formatCurrency(hoverData.compoundInterest) : '-'}
           </span>
         </div>
