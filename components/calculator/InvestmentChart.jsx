@@ -14,10 +14,11 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import useBreakpoint from "@/hooks/use-breakpoint";
 
-export default function InvestmentChart({ results }) {
+export default function InvestmentChart({ results, years }) {
   const [hoverData, setHoverData] = useState(null);
   const theme = useTheme();
   const breakpoint = useBreakpoint();
+  const period = years > 1 ? "Year" : "Month";
 
   const lineColors = {
     contributions: theme === "dark" ? "#b3cbd6" : "#737373",
@@ -80,9 +81,14 @@ export default function InvestmentChart({ results }) {
               stroke={lineColors.grid}
             />
             <XAxis 
-              dataKey="period" 
-              stroke={lineColors.contributions} 
+              dataKey="period"
+              stroke={lineColors.contributions}
               fontSize={12}
+              tickFormatter={(value) => `${period} ${value}`}
+              angle={-50}
+              textAnchor="end"
+              height={70}
+              interval={['sm', 'xs'].includes(breakpoint) ? years / 5 : 1}
             />
             <YAxis 
               tickFormatter={(value) => new Intl.NumberFormat('en-US', {
@@ -92,7 +98,8 @@ export default function InvestmentChart({ results }) {
               }).format(value)}
               stroke={lineColors.contributions}
               fontSize={12}
-              hide={['sm', 'xs'].includes(breakpoint)}
+              angle={['sm', 'xs'].includes(breakpoint) ? -50 : 0}
+              width={['sm', 'xs'].includes(breakpoint) ? 35 : 60}
             />
             <Line 
               key="contributions"

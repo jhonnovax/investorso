@@ -50,7 +50,7 @@ export default function Page() {
           <div className="lg:col-span-2 space-y-8">
             {results.length > 0 && (
               <>
-                <InvestmentChart results={results} />
+                <InvestmentChart years={formData.years} results={results} />
                 <InvestmentTable years={formData.years} results={results} />
               </>
             )}
