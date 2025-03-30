@@ -1,4 +1,5 @@
 "use client";
+import CurrencyInput from 'react-currency-input-field';
 
 export default function CalculatorForm({ formData, setFormData, onCalculate }) {
   function handleSubmit(e) {
@@ -19,11 +20,19 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <label className="label">
           <span className="label-text">Initial Investment ($)</span>
         </label>
-        <input
-          type="number"
+        <CurrencyInput
+          id="initial-investment"
           className="input input-bordered"
           value={formData.initialInvestment}
-          onChange={(e) => handleNumberInput(e, 'initialInvestment')}
+          onValueChange={(value) => 
+            setFormData({
+              ...formData,
+              initialInvestment: value ? Number(value) : ''
+            })
+          }
+          prefix="$"
+          decimalsLimit={2}
+          allowNegativeValue={false}
         />
       </div>
 
@@ -31,11 +40,19 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <label className="label">
           <span className="label-text">Monthly Contribution ($)</span>
         </label>
-        <input
-          type="number"
+        <CurrencyInput
+          id="monthly-contribution"
           className="input input-bordered"
           value={formData.monthlyContribution}
-          onChange={(e) => handleNumberInput(e, 'monthlyContribution')}
+          onValueChange={(value) => 
+            setFormData({
+              ...formData,
+              monthlyContribution: value ? Number(value) : ''
+            })
+          }
+          prefix="$"
+          decimalsLimit={2}
+          allowNegativeValue={false}
         />
       </div>
 
@@ -43,11 +60,20 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <label className="label">
           <span className="label-text">Length of Time in Years</span>
         </label>
-        <input
-          type="number"
+        <CurrencyInput
+          id="years"
           className="input input-bordered"
           value={formData.years}
-          onChange={(e) => handleNumberInput(e, 'years')}
+          onValueChange={(value) => 
+            setFormData({
+              ...formData,
+              years: value ? Number(value) : ''
+            })
+          }
+          decimalsLimit={0}
+          allowNegativeValue={false}
+          suffix=" years"
+          disableGroupSeparators={true}
         />
       </div>
 
@@ -55,11 +81,20 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <label className="label">
           <span className="label-text">Estimated Annual Interest Rate (%)</span>
         </label>
-        <input
-          type="number"
+        <CurrencyInput
+          id="annual-interest-rate"
           className="input input-bordered"
           value={formData.annualInterestRate}
-          onChange={(e) => handleNumberInput(e, 'annualInterestRate')}
+          onValueChange={(value) => 
+            setFormData({
+              ...formData,
+              annualInterestRate: value ? Number(value) : ''
+            })
+          }
+          decimalsLimit={2}
+          allowNegativeValue={false}
+          allowDecimals={true}
+          disableGroupSeparators={true}
         />
       </div>
 

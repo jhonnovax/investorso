@@ -73,7 +73,7 @@ export default function InvestmentChart({ results }) {
             <Line 
               type="monotone" 
               dataKey="simpleInterest" 
-              stroke="#cead00" 
+              stroke="#8f7800" 
               name="Simple Interest"
               strokeWidth={1.5}
               strokeDasharray="5 5"
