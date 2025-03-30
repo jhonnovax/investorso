@@ -7,7 +7,7 @@ export default function InvestmentTable({ years, results }) {
         <thead>
           <tr>
             <th>{ years > 1 ? "Year" : "Month" }</th>
-            <th>Net Deposits</th>
+            <th><span className="hidden md:inline">Net</span> Deposits</th>
             <th>Simple <span className="hidden md:inline">Interest</span><span className="inline md:hidden">%</span></th>
             <th>Compound <span className="hidden md:inline">Interest</span><span className="inline md:hidden">%</span></th>
           </tr>
