@@ -2,7 +2,7 @@ import themes from "daisyui/src/theming/themes";
 
 const config = {
   // REQUIRED
-  appName: "Investor Calculator",
+  appName: "Compound Interest Calculator",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
     "Calculate your compound interest of your investments, and see how it grows over time and how much you can expect to make.",
