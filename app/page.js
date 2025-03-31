@@ -18,9 +18,39 @@ const defaultFormData = {
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState(defaultFormData);
+  const [errors, setErrors] = useState({});
   const [results, setResults] = useState(calculateCompoundInterest(defaultFormData));
 
+  function onValidate() {
+    const errors = {};
+
+    if (formData.initialInvestment === undefined) {
+      errors.initialInvestment = 'Enter an initial investment';
+    }
+
+    if (formData.monthlyContribution === undefined) {
+      errors.monthlyContribution = 'Enter a monthly contribution';
+    }
+
+    if (formData.years === undefined) {
+      errors.years = 'Enter a number of years';
+    }
+
+    if (formData.annualInterestRate === undefined) {
+      errors.annualInterestRate = 'Enter an annual interest rate';
+    }
+    
+    return errors;
+  }
+
   function onCalculate() {
+    const errors = onValidate();
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
     setResults(calculateCompoundInterest(formData));
     setIsOpen(false);
   }
@@ -29,6 +59,7 @@ export default function Page() {
     <div className="py-4">
       <CalculatorForm 
         formData={formData}
+        errors={errors}
         setFormData={setFormData}
         onCalculate={onCalculate}
       />
@@ -60,6 +91,7 @@ export default function Page() {
             <h2 className="text-xl font-semibold mb-6">Calculator Parameters</h2>
             <CalculatorForm 
               formData={formData}
+              errors={errors}
               setFormData={setFormData}
               onCalculate={onCalculate}
             />

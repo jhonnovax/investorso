@@ -1,7 +1,7 @@
 "use client";
 import CurrencyInput from 'react-currency-input-field';
 
-export default function CalculatorForm({ formData, setFormData, onCalculate }) {
+export default function CalculatorForm({ formData, errors, setFormData, onCalculate }) {
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -16,6 +16,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           id="initial-investment"
           className="input input-bordered"
           value={formData.initialInvestment}
+          onBlur={onCalculate}
           onValueChange={(value) => 
             setFormData({
               ...formData,
@@ -26,6 +27,9 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           decimalsLimit={2}
           allowNegativeValue={false}
         />
+        {errors.initialInvestment && (
+          <p className="text-red-700 dark:text-red-300 text-sm mt-1">{errors.initialInvestment}</p>
+        )}
       </div>
 
       <div className="form-control">
@@ -36,6 +40,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           id="monthly-contribution"
           className="input input-bordered"
           value={formData.monthlyContribution}
+          onBlur={onCalculate}
           onValueChange={(value) => 
             setFormData({
               ...formData,
@@ -46,6 +51,9 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           decimalsLimit={2}
           allowNegativeValue={false}
         />
+        {errors.monthlyContribution && (
+          <p className="text-red-700 dark:text-red-300 text-sm mt-1">{errors.monthlyContribution}</p>
+        )}
       </div>
 
       <div className="form-control">
@@ -55,6 +63,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <CurrencyInput
           id="years"
           className="input input-bordered"
+          onBlur={onCalculate}
           value={formData.years}
           onValueChange={(value) => 
             setFormData({
@@ -67,6 +76,9 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           suffix=" years"
           disableGroupSeparators={true}
         />
+        {errors.years && (
+          <p className="text-red-700 dark:text-red-300 text-sm mt-1">{errors.years}</p>
+        )}
       </div>
 
       <div className="form-control">
@@ -76,6 +88,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
         <CurrencyInput
           id="annual-interest-rate"
           className="input input-bordered"
+          onBlur={onCalculate}
           value={formData.annualInterestRate}
           onValueChange={(value) => 
             setFormData({
@@ -89,6 +102,9 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           disableGroupSeparators={true}
           suffix="%"
         />
+        {errors.annualInterestRate && (
+          <p className="text-red-700 dark:text-red-300 text-sm mt-1">{errors.annualInterestRate}</p>
+        )}
       </div>
 
       <div className="form-control">
@@ -99,6 +115,7 @@ export default function CalculatorForm({ formData, setFormData, onCalculate }) {
           id="compoundFrequency"
           className="select select-bordered"
           value={formData.compoundFrequency}
+          onBlur={onCalculate}
           onChange={(e) =>
             setFormData({ ...formData, compoundFrequency: e.target.value })
           }
