@@ -51,6 +51,13 @@ export default function Page() {
       return;
     }
 
+    // Format data
+    formData.initialInvestment = parseFloat(formData.initialInvestment);
+    formData.monthlyContribution = parseFloat(formData.monthlyContribution);
+    formData.years = parseInt(formData.years);
+    formData.annualInterestRate = parseFloat(formData.annualInterestRate);
+
+    // Calculate results
     setResults(calculateCompoundInterest(formData));
     setIsOpen(false);
   }
