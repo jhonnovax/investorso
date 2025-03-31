@@ -34,16 +34,21 @@ export default function Page() {
 
     if (formData.years === undefined) {
       errors.years = 'Enter a number of years';
+    } else if (Number(formData.years) > 100) {
+      errors.years = 'Number of years less than 100';
     }
 
     if (formData.annualInterestRate === undefined) {
       errors.annualInterestRate = 'Enter an annual interest rate';
+    } else if (Number(formData.annualInterestRate) > 100) {
+      errors.annualInterestRate = 'Annual interest rate less than 100';
     }
     
     return errors;
   }
 
   function onCalculate() {
+    setErrors({});
     const errors = onValidate();
 
     if (Object.keys(errors).length > 0) {
