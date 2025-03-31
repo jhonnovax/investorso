@@ -41,6 +41,20 @@ const Header = ({
     setIsOpen(false);
   }, [searchParams, setIsOpen]); */
 
+  // Add useEffect to handle body scroll
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to ensure scroll is re-enabled when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <header className="bg-base-100 shadow-sm">
       <nav className="container flex items-center justify-between px-4 md:px-5 py-4 mx-auto max-w-7xl">
