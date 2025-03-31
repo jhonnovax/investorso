@@ -103,6 +103,7 @@ export default function InvestmentChart({ results, years }) {
                 if (hoverData && props.payload.period === hoverData.period) {
                   return (
                     <circle 
+                      key={props.key}
                       cx={props.cx} 
                       cy={props.cy} 
                       r="4" 
@@ -127,6 +128,7 @@ export default function InvestmentChart({ results, years }) {
                 if (hoverData && props.payload.period === hoverData.period) {
                   return (
                     <circle 
+                      key={props.key}
                       cx={props.cx} 
                       cy={props.cy} 
                       r="4" 
@@ -150,6 +152,7 @@ export default function InvestmentChart({ results, years }) {
                 if (hoverData && props.payload.period === hoverData.period) {
                   return (
                     <circle 
+                      key={props.key}
                       cx={props.cx} 
                       cy={props.cy} 
                       r="4" 
