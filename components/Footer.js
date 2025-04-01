@@ -34,7 +34,7 @@ const Footer = () => {
             {config.appDescription}
           </p>
 
-          <p className="mt-3">
+          <p className="mt-3 flex flex-col gap-2 md:flex-row justify-center items-center">
             <Link href="/tos" className="link link-hover mr-2">
               ❤️ Support Us
             </Link>
