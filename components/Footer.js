@@ -9,7 +9,7 @@ import logo from "@/app/icon.png";
 const Footer = () => {
   return (
     <footer className="bg-base-200 border-t border-base-content/10">
-      <div className="max-w-7xl mx-auto px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-8">
 
         <div className="mx-auto text-center">
           <Link
