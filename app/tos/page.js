@@ -12,16 +12,16 @@ import config from "@/config";
 // You are an excellent lawyer.
 
 // I need your help to write a simple Terms & Services for my website. Here is some context:
-// - Website: https://shipfa.st
-// - Name: ShipFast
-// - Contact information: marc@shipfa.st
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
+// - Website: https://investorso.com
+// - Name: Compound Interest Calculator
+// - Contact information: https://investorso.com
+// - Description: Calculate your compound interest of your investments, and see how it grows over time and how much you can expect to make.
 // - Ownership: when buying a package, users can download code to create apps. They own the code but they do not have the right to resell it. They can ask for a full refund within 7 day after the purchase.
-// - User data collected: name, email and payment information
+// - User data collected: Investment details not data is stored
 // - Non-personal data collection: web cookies
-// - Link to privacy-policy: https://shipfa.st/privacy-policy
-// - Governing Law: France
-// - Updates to the Terms: users will be updated by email
+// - Link to privacy-policy: https://investorso.com/privacy-policy
+// - Governing Law: United States
+// - Updates to the Terms: users will be updated by web page
 
 // Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
 
@@ -32,7 +32,7 @@ export const metadata = getSEOTags({
 
 const TOS = () => {
   return (
-    <main className="max-w-xl mx-auto">
+    <main className="max-w-7xl mx-auto">
       <div className="p-5">
         <Link href="/" className="btn btn-ghost">
           <svg
@@ -57,39 +57,45 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: September 26, 2023
+          {`Last Updated: March 31, 2025
 
-Welcome to ShipFast!
+Welcome to Compound Interest Calculator ("the Website"), operated by Investorso ("we," "us," or "our"). By accessing or using our Website, you agree to these Terms & Services ("Terms"). If you do not agree, please do not use our Website.
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+1. Services Provided
 
-1. Description of ShipFast
+Our Website allows users to calculate the compound interest of their investments and analyze potential growth over time. Additionally, users may purchase packages that include downloadable code to create their own applications.
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+2. Ownership & Usage Rights
 
-2. Ownership and Usage Rights
+Upon purchasing a package, users receive ownership of the downloaded code.
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+Users may use the code for personal or business purposes but are strictly prohibited from reselling, redistributing, or sublicensing it in any form.
 
-3. User Data and Privacy
+We retain all rights to the original code, excluding the granted usage rights.
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+3. Refund Policy
 
-4. Non-Personal Data Collection
+Users may request a full refund within 7 days of purchase. To request a refund, contact us at https://investorso.com.
 
-We use web cookies to collect non-personal data for the purpose of improving our services and user experience.
+4. Data Collection & Privacy
 
-5. Governing Law
+We do not store user investment details.
 
-These Terms are governed by the laws of France.
+We collect non-personal data through web cookies to enhance user experience. For more details, please refer to our Privacy Policy.
 
-6. Updates to the Terms
+5. Limitation of Liability
 
-We may update these Terms from time to time. Users will be notified of any changes via email.
+We provide our services "as-is" and make no warranties regarding their accuracy, reliability, or fitness for a particular purpose. Users assume full responsibility for any financial decisions made based on the Website's calculations.
 
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
+6. Governing Law
 
-Thank you for using ShipFast!`}
+These Terms are governed by and construed in accordance with the laws of the United States.
+
+7. Updates to Terms
+
+We may update these Terms at any time. Users will be notified of updates via the Website. Continued use of our services constitutes acceptance of the revised Terms.
+
+For any questions, please contact us at https://investorso.com.`}
         </pre>
       </div>
     </main>

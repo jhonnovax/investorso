@@ -6,6 +6,7 @@ import { calculateCompoundInterest } from "@/services/calculator";
 import CalculatorForm from "@/components/calculator/CalculatorForm";
 import InvestmentChart from "@/components/calculator/InvestmentChart";
 import InvestmentTable from "@/components/calculator/InvestmentTable";
+import Footer from "@/components/Footer";
 
 const defaultFormData = {
   initialInvestment: 0,
@@ -125,6 +126,8 @@ export default function Page() {
           </div>
         </div>
       </main>
+
+      <Footer />
 
       {/* Add scroll to top button */}
       <button
