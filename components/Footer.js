@@ -34,15 +34,15 @@ const Footer = () => {
             {config.appDescription}
           </p>
 
-          <p className="mt-3 flex flex-col gap-2 md:flex-row justify-center items-center">
-            <Link href="/tos" className="link link-hover mr-2">
+          <p className="mt-3 flex flex-col gap-2 md:gap-4 md:flex-row justify-center items-center">
+            <Link href="/tos" className="link link-hover">
               ❤️ Support Us
-            </Link>
-            <Link href="/tos" className="link link-hover mr-2">
-              📜 Terms of services
             </Link>
             <Link href="/privacy-policy" className="link link-hover">
               🔒 Privacy policy
+            </Link>
+            <Link href="/tos" className="link link-hover">
+              📜 Terms of services
             </Link>
           </p>
 
