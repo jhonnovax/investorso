@@ -156,7 +156,7 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
               years: value
             })
           }
-          decimalsLimit={0}
+          allowDecimals={false}
           allowNegativeValue={false}
           suffix=" years"
           disableGroupSeparators={true}

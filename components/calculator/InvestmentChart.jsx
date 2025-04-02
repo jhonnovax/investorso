@@ -14,10 +14,11 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import useBreakpoint from "@/hooks/use-breakpoint";
 
-export default function InvestmentChart({ results, years }) {
+export default function InvestmentChart({ calculationParams,results }) {
   const [hoverData, setHoverData] = useState(null);
   const theme = useTheme();
   const breakpoint = useBreakpoint();
+  const { years, annualInterestRate, compoundFrequency } = calculationParams;
   const period = years > 1 ? "Year" : "Month";
 
   const lineColors = {
@@ -182,6 +183,11 @@ export default function InvestmentChart({ results, years }) {
             )}
           </ComposedChart>
         </ResponsiveContainer>
+      </div>
+
+      {/* Calculation parameters summary */}
+      <div className="block md:hidden mb-2 text-xs sm:text-sm text-center capitalize font-bold">
+        Interest Rate {annualInterestRate}% {compoundFrequency}
       </div>
 
       {/* Value display section below chart */}

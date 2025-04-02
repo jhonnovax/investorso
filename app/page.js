@@ -20,11 +20,6 @@ export default function Page() {
     compoundFrequency: "annually",
   });
 
-  // Add scroll handler
-  useEffect(() => {
-    setResults(calculateCompoundInterest(calculationParams));
-  }, [calculationParams]);
-
   function onBlur(calculationParams) {
     setCalculationParams(calculationParams);
   }
@@ -33,6 +28,10 @@ export default function Page() {
     setCalculationParams(calculationParams);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    setResults(calculateCompoundInterest(calculationParams));
+  }, [calculationParams]);
 
   const mobileDrawerContent = (
     <div className="py-4">
@@ -59,7 +58,7 @@ export default function Page() {
           <div className="lg:col-span-2 space-y-8">
             {results.length > 0 && (
               <>
-                <InvestmentChart years={calculationParams.years} results={results} />
+                <InvestmentChart calculationParams={calculationParams} results={results} />
                 <InvestmentTable years={calculationParams.years} results={results} />
               </>
             )}
