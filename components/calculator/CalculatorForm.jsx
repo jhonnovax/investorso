@@ -1,9 +1,94 @@
 "use client";
+import { useState } from 'react';
 import CurrencyInput from 'react-currency-input-field';
 
-export default function CalculatorForm({ formData, errors, setFormData, onCalculate }) {
+export default function CalculatorForm({ onBlur, onSubmit }) {
+  const [errors, setErrors] = useState({});
+  const [calculationParams, setCalculationParams] = useState({
+    initialInvestment: 0,
+    monthlyContribution: 833,
+    years: 30,
+    annualInterestRate: 7,
+    compoundFrequency: "annually",
+  });
+
+  function formatValues(calculationParams) {
+    const calculationParamsFormatted = {};
+
+     // Format data
+     calculationParamsFormatted.initialInvestment = calculationParams.initialInvestment === '' 
+      ? null 
+      : parseFloat(calculationParams.initialInvestment);
+
+     calculationParamsFormatted.monthlyContribution = calculationParams.monthlyContribution === '' 
+      ? null 
+      : parseFloat(calculationParams.monthlyContribution);
+
+     calculationParamsFormatted.years = calculationParams.years === '' 
+      ? null 
+      : parseInt(calculationParams.years);
+
+     calculationParamsFormatted.annualInterestRate = calculationParams.annualInterestRate === '' 
+      ? null 
+      : parseFloat(calculationParams.annualInterestRate);
+
+      calculationParamsFormatted.compoundFrequency = calculationParams.compoundFrequency;
+
+     return calculationParamsFormatted;
+  }
+
+  function onValidate() {
+    const errors = {};
+
+    if (calculationParams.initialInvestment === undefined) {
+      errors.initialInvestment = 'Enter an initial investment';
+    }
+
+    if (calculationParams.monthlyContribution === undefined) {
+      errors.monthlyContribution = 'Enter a monthly contribution';
+    }
+
+    if (calculationParams.years === undefined) {
+      errors.years = 'Enter a number of years';
+    } else if (Number(calculationParams.years) > 100) {
+      errors.years = 'Number of years less than 100';
+    }
+
+    if (calculationParams.annualInterestRate === undefined) {
+      errors.annualInterestRate = 'Enter an annual interest rate';
+    } else if (Number(calculationParams.annualInterestRate) > 100) {
+      errors.annualInterestRate = 'Annual interest rate less than 100';
+    }
+    
+    return errors;
+  }
+
+  function onBlurField() {
+    setErrors({});
+    const calculationParamsFormatted = formatValues(calculationParams);
+    const errors = onValidate(calculationParamsFormatted);
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
+    onBlur(calculationParamsFormatted);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
+
+    setErrors({});
+    const calculationParamsFormatted = formatValues(calculationParams);
+    const errors = onValidate(calculationParamsFormatted);
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
+    onSubmit(calculationParamsFormatted);
   }
 
   return (
@@ -15,11 +100,11 @@ export default function CalculatorForm({ formData, errors, setFormData, onCalcul
         <CurrencyInput
           id="initial-investment"
           className="input input-bordered"
-          value={formData.initialInvestment}
-          onBlur={onCalculate}
+          value={calculationParams.initialInvestment}
+          onBlur={onBlurField}
           onValueChange={(value) => 
-            setFormData({
-              ...formData,
+            setCalculationParams({
+              ...calculationParams,
               initialInvestment: value
             })
           }
@@ -39,11 +124,11 @@ export default function CalculatorForm({ formData, errors, setFormData, onCalcul
         <CurrencyInput
           id="monthly-contribution"
           className="input input-bordered"
-          value={formData.monthlyContribution}
-          onBlur={onCalculate}
+          value={calculationParams.monthlyContribution}
+          onBlur={onBlurField}
           onValueChange={(value) => 
-            setFormData({
-              ...formData,
+            setCalculationParams({
+              ...calculationParams,
               monthlyContribution: value
             })
           }
@@ -63,11 +148,11 @@ export default function CalculatorForm({ formData, errors, setFormData, onCalcul
         <CurrencyInput
           id="years"
           className="input input-bordered"
-          onBlur={onCalculate}
-          value={formData.years}
+          onBlur={onBlurField}
+          value={calculationParams.years}
           onValueChange={(value) => 
-            setFormData({
-              ...formData,
+            setCalculationParams({
+              ...calculationParams,
               years: value
             })
           }
@@ -88,11 +173,11 @@ export default function CalculatorForm({ formData, errors, setFormData, onCalcul
         <CurrencyInput
           id="annual-interest-rate"
           className="input input-bordered"
-          onBlur={onCalculate}
-          value={formData.annualInterestRate}
+          onBlur={onBlurField}
+          value={calculationParams.annualInterestRate}
           onValueChange={(value) => 
-            setFormData({
-              ...formData,
+            setCalculationParams({
+              ...calculationParams,
               annualInterestRate: value
             })
           }
@@ -114,10 +199,10 @@ export default function CalculatorForm({ formData, errors, setFormData, onCalcul
         <select
           id="compoundFrequency"
           className="select select-bordered"
-          value={formData.compoundFrequency}
-          onBlur={onCalculate}
+          value={calculationParams.compoundFrequency}
+          onBlur={onBlurField}
           onChange={(e) =>
-            setFormData({ ...formData, compoundFrequency: e.target.value })
+            setCalculationParams({ ...calculationParams, compoundFrequency: e.target.value })
           }
         >
           <option value="annually">Annually</option>
@@ -131,7 +216,6 @@ export default function CalculatorForm({ formData, errors, setFormData, onCalcul
       <button
         type="submit"
         className="btn btn-primary w-full mt-6"
-        onClick={onCalculate}
       >
         Calculate
       </button>
