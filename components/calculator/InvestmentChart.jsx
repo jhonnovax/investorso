@@ -29,6 +29,14 @@ export default function InvestmentChart({ calculationParams,results }) {
     grid: theme === "dark" ? "#555" : "#ccc"
   }
 
+  function getInterval(years) {
+    if (['sm', 'xs'].includes(breakpoint)) {
+      return Math.round(years / 5);
+    }
+
+    return Math.round(years / 15);
+  }
+
   // Initialize with last data point only on mount or when results change
   useEffect(() => {
     if (results && results.length > 0) {
@@ -72,7 +80,7 @@ export default function InvestmentChart({ calculationParams,results }) {
               angle={-50}
               textAnchor="end"
               height={70}
-              interval={['sm', 'xs'].includes(breakpoint) ? years / 5 : 1}
+              interval={getInterval(years)}
             />
             <YAxis 
               tickFormatter={(value) => formatCurrencyCompact(value)}
