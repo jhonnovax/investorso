@@ -34,7 +34,7 @@ const Footer = () => {
             {config.appDescription}
           </p>
 
-          <p className="mt-3 flex flex-col gap-2 md:gap-4 md:flex-row justify-center items-center">
+          <p className="mt-3 flex flex-col gap-2 md:gap-4 md:flex-row justify-center items-center text-sm text-base-content/80">
             <Link href="/tos" className="link link-hover">
               ❤️ Support Us
             </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
             </Link>
           </p>
 
-          <p className="mt-3 text-sm text-base-content/60">
+          <p className="mt-3 text-sm text-base-content/80">
             Copyright © {new Date().getFullYear()} - All rights reserved
           </p>
 

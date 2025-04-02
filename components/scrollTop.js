@@ -23,7 +23,7 @@ export default function ScrollTop() {
         className={`fixed bottom-3 right-3 md:bottom-6 md:right-6 flex items-center justify-center btn btn-circle btn-primary btn-md shadow-lg tooltip tooltip-left transition-opacity duration-300 ${
         showScrollTop ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
-        data-tip="Scroll to top"
+        title="Scroll to top"
     >
       <svg
       xmlns="http://www.w3.org/2000/svg"

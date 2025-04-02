@@ -94,7 +94,7 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="form-control">
-        <label className="label">
+        <label className="label" htmlFor="initial-investment">
           <span className="label-text">Initial Investment ($)</span>
         </label>
         <CurrencyInput
@@ -118,7 +118,7 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
       </div>
 
       <div className="form-control">
-        <label className="label">
+        <label className="label" htmlFor="monthly-contribution">
           <span className="label-text">Monthly Contribution ($)</span>
         </label>
         <CurrencyInput
@@ -142,7 +142,7 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
       </div>
 
       <div className="form-control">
-        <label className="label">
+        <label className="label" htmlFor="years">
           <span className="label-text">Length of Time in Years</span>
         </label>
         <CurrencyInput
@@ -167,7 +167,7 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
       </div>
 
       <div className="form-control">
-        <label className="label">
+        <label className="label" htmlFor="annual-interest-rate">
           <span className="label-text">Estimated Annual Interest Rate (%)</span>
         </label>
         <CurrencyInput

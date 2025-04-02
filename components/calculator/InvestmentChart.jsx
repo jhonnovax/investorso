@@ -23,8 +23,8 @@ export default function InvestmentChart({ calculationParams,results }) {
 
   const lineColors = {
     contributions: theme === "dark" ? "#b3cbd6" : "#737373",
-    simpleInterest: theme === "dark" ? "#ffd900" : "#8f7800",
-    compoundInterest: theme === "dark" ? "#4ade80" : "#419400",
+    simpleInterest: theme === "dark" ? "#ffd900" : "#877200",
+    compoundInterest: theme === "dark" ? "#4ade80" : "#398500",
     grid: theme === "dark" ? "#555" : "#ccc"
   }
 
