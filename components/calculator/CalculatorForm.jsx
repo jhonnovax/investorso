@@ -50,13 +50,13 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
 
     if (calculationParams.years === undefined) {
       errors.years = 'Enter a number of years';
-    } else if (Number(calculationParams.years) > 100) {
+    } else if (Number(calculationParams.years) > 99) {
       errors.years = 'Number of years less than 100';
     }
 
     if (calculationParams.annualInterestRate === undefined) {
       errors.annualInterestRate = 'Enter an annual interest rate';
-    } else if (Number(calculationParams.annualInterestRate) > 100) {
+    } else if (Number(calculationParams.annualInterestRate) > 99) {
       errors.annualInterestRate = 'Annual interest rate less than 100';
     }
     

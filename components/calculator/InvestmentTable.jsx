@@ -1,3 +1,5 @@
+import { formatCurrency, formatCurrencyCompact } from "@/services/format";
+
 export default function InvestmentTable({ years, results }) {
 
   return (
@@ -16,9 +18,9 @@ export default function InvestmentTable({ years, results }) {
           {results.map((result, index) => (
             <tr key={index}>
               <td className="p-2 md:p-4">{result.period}</td>
-              <td className="p-2 md:p-4">${result.contributions.toLocaleString()}</td>
-              <td className="p-2 md:p-4">${result.simpleInterest.toLocaleString()}</td>
-              <td className="p-2 md:p-4">${result.compoundInterest.toLocaleString()}</td>
+              <td className="p-2 md:p-4" title={formatCurrency(result.contributions)}>{formatCurrencyCompact(result.contributions)}</td>
+              <td className="p-2 md:p-4" title={formatCurrency(result.simpleInterest)}>{formatCurrencyCompact(result.simpleInterest)}</td>
+              <td className="p-2 md:p-4" title={formatCurrency(result.compoundInterest)}>{formatCurrencyCompact(result.compoundInterest)}</td>
             </tr>
           ))}
         </tbody>

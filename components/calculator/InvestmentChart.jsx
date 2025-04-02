@@ -13,6 +13,7 @@ import {
 import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import useBreakpoint from "@/hooks/use-breakpoint";
+import { formatCurrencyCompact, formatCurrency } from "@/services/format";
 
 export default function InvestmentChart({ calculationParams,results }) {
   const [hoverData, setHoverData] = useState(null);
@@ -34,14 +35,6 @@ export default function InvestmentChart({ calculationParams,results }) {
       setHoverData(results[results.length - 1]);
     }
   }, [results]);
-
-  const formatCurrency = (value) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 0
-    }).format(value);
-  };
 
   return (
     <div className="bg-base-100 p-4 rounded-lg shadow-sm">
@@ -82,11 +75,7 @@ export default function InvestmentChart({ calculationParams,results }) {
               interval={['sm', 'xs'].includes(breakpoint) ? years / 5 : 1}
             />
             <YAxis 
-              tickFormatter={(value) => new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                notation: 'compact',
-              }).format(value)}
+              tickFormatter={(value) => formatCurrencyCompact(value)}
               stroke={lineColors.contributions}
               fontSize={12}
               angle={['sm', 'xs'].includes(breakpoint) ? -50 : 0}
@@ -199,8 +188,8 @@ export default function InvestmentChart({ calculationParams,results }) {
             </svg>
             <span className="hidden md:inline">Net</span> Deposits
           </span>
-          <span className="font-semibold">
-            {hoverData ? formatCurrency(hoverData.contributions) : '-'}
+          <span className="font-semibold" title={hoverData ? formatCurrency(hoverData.contributions) : '-'}>
+            {hoverData ? formatCurrencyCompact(hoverData.contributions) : '-'}
           </span>
         </div>
         <div className="flex flex-col items-center">
@@ -210,8 +199,8 @@ export default function InvestmentChart({ calculationParams,results }) {
             </svg>
             Simple <span className="hidden md:inline">Interest</span><span className="inline md:hidden">%</span>
           </span>
-          <span className="font-semibold">
-            {hoverData ? formatCurrency(hoverData.simpleInterest) : '-'}
+          <span className="font-semibold" title={hoverData ? formatCurrency(hoverData.simpleInterest) : '-'}>
+            {hoverData ? formatCurrencyCompact(hoverData.simpleInterest) : '-'}
           </span>
         </div>
         <div className="flex flex-col items-center">
@@ -221,8 +210,8 @@ export default function InvestmentChart({ calculationParams,results }) {
             </svg>
             Compound <span className="hidden md:inline">Interest</span><span className="inline md:hidden">%</span>
           </span>
-          <span className="font-semibold">
-            {hoverData ? formatCurrency(hoverData.compoundInterest) : '-'}
+          <span className="font-semibold" title={hoverData ? formatCurrency(hoverData.compoundInterest) : '-'}>
+            {hoverData ? formatCurrencyCompact(hoverData.compoundInterest) : '-'}
           </span>
         </div>
       </div>
