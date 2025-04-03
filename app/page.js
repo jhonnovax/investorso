@@ -8,8 +8,10 @@ import InvestmentChart from "@/components/calculator/InvestmentChart";
 import InvestmentTable from "@/components/calculator/InvestmentTable";
 import Footer from "@/components/Footer";
 import ScrollTop from "@/components/scrollTop";
+import config from "@/config";
 
 export default function Page() {
+  const { appName, appDescription } = config;
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState([]);
   const [calculationParams, setCalculationParams] = useState({
@@ -54,6 +56,8 @@ export default function Page() {
       />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
+        <h1 className="sr-only">{appName} | Investorso</h1>
+        <p className="sr-only">{appDescription}</p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
             {results.length > 0 && (
