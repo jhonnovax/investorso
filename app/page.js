@@ -60,6 +60,7 @@ export default function Page() {
               <>
                 <InvestmentChart calculationParams={calculationParams} results={results} />
                 <InvestmentTable years={calculationParams.years} results={results} />
+                <Footer />
               </>
             )}
           </div>
@@ -73,8 +74,6 @@ export default function Page() {
           </div>
         </div>
       </main>
-
-      <Footer />
 
       <ScrollTop />
 

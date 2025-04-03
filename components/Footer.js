@@ -12,37 +12,15 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
 
         <div className="mx-auto text-center">
-          <Link
-            href="/#"
-            aria-current="page"
-            className="flex gap-2 justify-center items-center"
-          >
-            <Image
-              src={logo}
-              alt={`${config.appName} logo`}
-              priority={true}
-              className="w-6 h-6"
-              width={24}
-              height={24}
-            />
-            <strong className="font-extrabold tracking-tight text-base md:text-lg">
-              {config.appName}
-            </strong>
-          </Link>
-
-          <p className="mt-3 text-sm text-base-content/80">
-            {config.appDescription}
-          </p>
-
-          <p className="mt-3 flex flex-col gap-2 md:gap-4 md:flex-row justify-center items-center text-sm text-base-content/80">
-            <Link href="https://donate.stripe.com/bIYeVnglufVQ4bCeUU" className="link link-hover">
-              ❤️ Support Us
-            </Link>
+          <p className="flex flex-col gap-2 md:gap-4 md:flex-row justify-center items-center text-sm text-base-content/80">
             <Link href="/privacy-policy" className="link link-hover">
               🔒 Privacy policy
             </Link>
             <Link href="/tos" className="link link-hover">
               📜 Terms of services
+            </Link>
+            <Link href="https://donate.stripe.com/bIYeVnglufVQ4bCeUU" className="link link-hover">
+              ❤️ Support Us
             </Link>
           </p>
 
