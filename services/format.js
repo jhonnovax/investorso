@@ -9,7 +9,7 @@ export const formatCurrency = (value) => {
 export const formatCurrencyCompact = (value) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    notation: 'compact',
+    notation: value > 100000 ? 'compact' : 'standard',
     currency: 'USD',
     maximumFractionDigits: 0
   }).format(value);

@@ -87,7 +87,7 @@ export default function InvestmentChart({ calculationParams,results }) {
               stroke={lineColors.contributions}
               fontSize={12}
               angle={['sm', 'xs'].includes(breakpoint) ? -50 : 0}
-              width={['sm', 'xs'].includes(breakpoint) ? 35 : 60}
+              width={['sm', 'xs'].includes(breakpoint) ? 40 : 60}
             />
             <Line 
               key="contributions"
