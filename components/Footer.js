@@ -35,7 +35,7 @@ const Footer = () => {
           </p>
 
           <p className="mt-3 flex flex-col gap-2 md:gap-4 md:flex-row justify-center items-center text-sm text-base-content/80">
-            <Link href="/tos" className="link link-hover">
+            <Link href="https://donate.stripe.com/bIYeVnglufVQ4bCeUU" className="link link-hover">
               ❤️ Support Us
             </Link>
             <Link href="/privacy-policy" className="link link-hover">
