@@ -73,8 +73,9 @@ const Header = ({
               width={32}
               height={32}
             />
-            <span className="font-extrabold text-base md:text-lg">{config.appName}</span>
-          </Link>
+				<span className="hidden md:block">{config.appName}</span>
+				<span className="block md:hidden">Interest Calculator</span>
+			</Link>
         </div>
 
         {/* Burger button */}

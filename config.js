@@ -2,10 +2,9 @@ import themes from "daisyui/src/theming/themes";
 
 const config = {
   // REQUIRED
-  appName: "Compound Interest Calculator",
+  appName: "Compound & Simple Interest Calculator",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
-  appDescription:
-    "Calculate your compound interest of your investments, and see how it grows over time and how much you can expect to make.",
+  appDescription: "Easily calculate your compound and simple interest. See how your investments grow over time and estimate how much you can earn with different rates and periods.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "investorso.com",
   crisp: {

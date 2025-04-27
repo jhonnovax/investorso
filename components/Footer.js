@@ -19,7 +19,7 @@ const Footer = () => {
             <Link href="/tos" className="link link-hover">
               📜 Terms of services
             </Link>
-            <Link href="https://donate.stripe.com/bIYeVnglufVQ4bCeUU" className="link link-hover">
+            <Link href="https://donate.stripe.com/bIYeVnglufVQ4bCeUU" className="link link-hover order-first md:order-none">
               ❤️ Support Us
             </Link>
           </p>
