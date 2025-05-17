@@ -1,4 +1,4 @@
-import { formatCurrency, formatCurrencyCompact } from "@/services/format";
+import { formatCurrency, formatCurrencyCompact } from "@/services/intl-service";
 
 export default function InvestmentTable({ years, results }) {
 

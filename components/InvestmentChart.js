@@ -13,7 +13,7 @@ import {
 import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import useBreakpoint from "@/hooks/use-breakpoint";
-import { formatCurrencyCompact, formatCurrency } from "@/services/format";
+import { formatCurrencyCompact, formatCurrency } from "@/services/intl-service";
 
 export default function InvestmentChart({ calculationParams,results }) {
   const [hoverData, setHoverData] = useState(null);
