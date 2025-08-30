@@ -11,6 +11,6 @@ export const formatCurrencyCompact = (value) => {
     style: 'currency',
     notation: value > 100000 ? 'compact' : 'standard',
     currency: 'USD',
-    maximumFractionDigits: 0
+    maximumFractionDigits: value >= 1000000 ? 2 : 0
   }).format(value);
 };
