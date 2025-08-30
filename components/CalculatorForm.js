@@ -217,8 +217,25 @@ export default function CalculatorForm({ onBlur, onSubmit }) {
         type="submit"
         className="btn btn-primary w-full mt-6"
       >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-dollar-sign w-6 h-6">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+          <path d="M12 18V6"></path>
+        </svg>
         Calculate
       </button>
+      <a 
+        href="https://fortuneok.com"
+        target="_blank"
+        className="btn btn-fortuneok w-full !mt-2" 
+        rel="noreferrer"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="transparent" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pie-chart w-5 h-5">
+          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+          <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+        </svg>
+        Create Portfolio
+      </a>
     </form>
   );
 } 

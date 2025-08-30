@@ -20,3 +20,15 @@ progress::-webkit-progress-value {
     @apply !capitalize;
   }
 }
+
+/* Extend DaisyUI button with your own style */
+.btn-fortuneok {
+@apply btn text-black; /* inherit DaisyUI btn styles */
+  background-color: #a9ff68;
+  border-color: #a9ff68;
+}
+
+.btn-fortuneok:hover {
+  background-color: #93e658; /* slightly darker for hover */
+  border-color: #93e658;
+}
